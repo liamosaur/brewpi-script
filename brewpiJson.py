@@ -29,6 +29,7 @@ jsonCols = ("\"cols\":[" +
             "{\"type\":\"string\",\"id\":\"FridgeAnn\",\"label\":\"Fridge Annotate\"}," +
             "{\"type\":\"number\",\"id\":\"RoomTemp\",\"label\":\"Room temp.\"}," +
             "{\"type\":\"number\",\"id\":\"State\",\"label\":\"State\"}" +
+	    	"{\"type\":\"number\",\"id\":\"BubbleRate\",\"label\":\"Bubble rate\"}," +
             "]")
 
 
@@ -99,6 +100,12 @@ def addRow(jsonFileName, row):
 		jsonFile.write("null")
 	else:
 		jsonFile.write("{\"v\":" + str(row['State']) + "}")
+		
+	# adding bubble rate
+	if row['BubbleRate'] is None:
+		jsonFile.write("null")
+	else:
+		jsonFile.write("{\"v\":" + str(row['BubbleRate']) + "}")	
 
 	# rewrite end of json file
 	jsonFile.write("]}]}")
